@@ -1,0 +1,26 @@
+version: '3'
+
+# association des services
+services:
+  db:
+    image: 'mysql:5.7'
+    ports:
+      - "30000:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d/:ro
+      - dbdata:/var/lib/mysql
+
+  app:
+    build: ./app
+    restart: on-failure
+    depends_on:
+      - 'db'
+    links:
+      - 'db'
+    ports:
+      - "5000:8083"
+
+volumes:
+  dbdata:

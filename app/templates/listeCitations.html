@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des citations</title>
+</head>
+<body>
+  <h1>Liste des citations</h1>
+  <p>Vous trouverez sur cette page la liste des citations déposées sur notre site.</p>
+
+  <ol type='1'>
+  {% for citation in citation  %}
+    <li>{{ citation[1] }} de {{ citation[2] }}</li>
+    {% endfor %}
+  </ol>
+
+</body>
+</html>
