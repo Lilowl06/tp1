@@ -14,7 +14,7 @@ services:
 
   app:
     build: ./app
-    restart: on-failure
+    restart: always
     depends_on:
       - 'db'
     links:
