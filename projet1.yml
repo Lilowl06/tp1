@@ -83,6 +83,6 @@
       dest: /home/osboxes/tp1
       force: yes
 
-  - name : Starting docker-compose files
-    become: yes
-    shell: docker-compose up --build -d
+#  - name : Starting docker-compose files
+#    become: yes
+#    shell: docker-compose up --build -d

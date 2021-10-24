@@ -1,0 +1,14 @@
+- name: Dump Database Projet1
+  hosts: victim
+  become: true
+  
+  tasks:
+  
+  - name: create a backup
+    mysql_db:
+      name: app
+      state: dump
+      target: /tmp/app.sql
+      login_host: db
+      login_user: root
+      login_password: root
