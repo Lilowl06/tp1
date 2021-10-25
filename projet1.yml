@@ -50,8 +50,6 @@
       - docker-ce-cli
       - containerd.io
 
-  ##### setup ansible <---> docker
-
   - name: install python dependencies
     become: yes
     apt:
@@ -60,7 +58,7 @@
       name: python3-pip
 
   - name: install 'Docker SDK for Python'
-    #become: true               <--- DO NOT DO THIS!!!
+    #become: true               <--- NE PAS LE FAIRE !!!
     pip:
       name: docker
 
@@ -72,7 +70,7 @@
     become: yes
     remote_user: ubuntu
     get_url: 
-      url : https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
+      url : https://github.com/docker/compose/releases/download/1.28.0/docker-compose-Linux-x86_64
       dest: /usr/local/bin/docker-compose
       mode: 'u+x,g+x'
 
@@ -83,6 +81,9 @@
       dest: /home/osboxes/tp1
       force: yes
 
-#  - name : Starting docker-compose files
-#    become: yes
-#    shell: docker-compose up --build -d
+  - name : Starting docker-compose files
+    become: yes
+    command: 
+      cmd: docker-compose up --build -d
+    args:
+      chdir: /home/osboxes/tp1 

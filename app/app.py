@@ -19,7 +19,7 @@ cursor = datab.cursor()
 def home():
     return render_template("accueil.html")
 
-@app.route("/depot")
+@app.route("/depot") # je peux rajouter (, methods='[POST]') pour filtrer le typ de requêtes
 def depotCitation():
     citation = request.args.get('citation')
     auteur = request.args.get('auteur')
